@@ -1,3 +1,17 @@
+Metadata-Version: 2.1
+Name: aksharify
+Version: 2.2.2
+Summary: Ascii art module
+Author-email: Prime Patel <primespatel@gmail.com>
+Project-URL: Homepage, https://github.com/primepatel/aksharify
+Project-URL: Bug Tracker, https://github.com/primepatel/aksharify/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE.md
+
 <a name="readme-top"></a>
 
 # __Aksharify__
@@ -28,13 +42,6 @@ python -m pip install aksharify
 ```
 
 ## Usage
-
-```python
-from aksharify import TextArt
-
-art = TextArt("Julia.png")
-art.image.show()
-```
 
 _For examples from user community, please refer to the [primepatel.github.io/aksharify](https://primepatel.github.io/aksharify)_
 

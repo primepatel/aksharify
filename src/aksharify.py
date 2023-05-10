@@ -35,7 +35,6 @@ class TextArt:
         for line_no in range(self.h):
             for pixel in range(line_no*self.w, line_no*self.w + self.w):
                 self.ascii_text += self.ascii_chars[bwdata[pixel]//div -1]
-        return self.ascii_text
     
     def numberify(self, first_char=0):
         for i in self.ascii_chars:
@@ -76,8 +75,11 @@ class TextArt:
         print(text)
 
     def text_output(self, fname):
+        text = ""
+        for line_no in range(self.h):
+            text += self.ascii_text[line_no*self.w:line_no*self.w + self.w] + "\n"
         with open(fname + ".txt", "w") as file:
-            file.write(self.ascii_text)
+            file.write(text)
     
     def color_output(self, fname):
         with open(fname + ".html", "w") as file:

@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: aksharify
-Version: 2.2.2
+Version: 2.2.3
 Summary: Ascii art module
 Author-email: Prime Patel <primespatel@gmail.com>
 Project-URL: Homepage, https://github.com/primepatel/aksharify
@@ -42,6 +42,13 @@ python -m pip install aksharify
 ```
 
 ## Usage
+
+```python
+from aksharify import TextArt
+
+art = TextArt("Julia.png")
+art.image.show()
+```
 
 _For examples from user community, please refer to the [primepatel.github.io/aksharify](https://primepatel.github.io/aksharify)_
 

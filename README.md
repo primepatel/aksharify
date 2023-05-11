@@ -32,8 +32,26 @@ python -m pip install aksharify
 ```python
 from aksharify import TextArt
 
+# input image file
 art = TextArt("Julia.png")
+
+# see image
 art.image.show()
+
+# set dimension of output text
+art.set_dim(80)
+
+# genetate text
+art.asciify()
+
+# output into .txt file
+art.text_output("output")
+
+# generate colored text using html
+art.colorify()
+
+# output into .html file
+art.color_output("output")
 ```
 
 _For examples from user community, please refer to the [primepatel.github.io/aksharify](https://primepatel.github.io/aksharify)_

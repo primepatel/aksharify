@@ -1,5 +1,6 @@
 from PIL import Image
 
+
 class TextArt:
     def __init__(self, image) -> None:
         self.image = Image.open(image)
@@ -8,13 +9,13 @@ class TextArt:
         self.ascii_text = ''
         self.ascii_html = ''
 
-    def set_dim(self, width=0, hight=0):
-        if width == 0 and hight != 0:
-            self.w, self.h = int(self.w/self.h * hight), hight
-        elif width != 0 and hight == 0:
-            self.w, self.h = width, int(self.h/self.w * width)
+    def set_dim(self, width=0, height=0):
+        if width != 0 and height == 0:
+            self.w, self.h = width, int((self.h/self.w * width)/2.143)
+        elif width == 0 and height != 0:
+            self.w, self.h = int((self.w/self.h * height)*2.143), height
         else:
-            self.w, self.h = width, hight
+            self.w, self.h = width, height
         self.image = self.image.resize((self.w, self.h))
 
     def binary_to_decimal(self, binary):
@@ -27,15 +28,15 @@ class TextArt:
 
     def span(self, integer, integer_colour):
         return f"<span style='color: rgb{integer_colour};'><b>{integer}</b></span>"
-    
+
     def asciify(self):
         self.ascii_text = ""
         div = 255//(len(self.ascii_chars))
         bwdata = self.image.convert('L').getdata()
         for line_no in range(self.h):
             for pixel in range(line_no*self.w, line_no*self.w + self.w):
-                self.ascii_text += self.ascii_chars[bwdata[pixel]//div -1]
-    
+                self.ascii_text += self.ascii_chars[bwdata[pixel]//div - 1]
+
     def numberify(self, first_char=0):
         for i in self.ascii_chars:
             if not i.isnumeric():
@@ -44,7 +45,7 @@ class TextArt:
         if first_char != 0:
             self.ascii_text = str(first_char) + self.ascii_text[1:]
         return self.ascii_text
-    
+
     def primify(self, prime, asis=True, func=bin):
         if not asis and len(bin(int(prime))) == len(func(self.ascii_text)):
             self.ascii_text = func(int(prime))
@@ -52,22 +53,23 @@ class TextArt:
             self.ascii_text = str(prime)
         else:
             print("not primified")
-    
+
     def replace(self, text, position):
-        self.ascii_text = self.ascii_text[:position]+ text + self.ascii_text[position+len(text):]
-    
+        self.ascii_text = self.ascii_text[:position] + \
+            text + self.ascii_text[position+len(text):]
+
     def colorify(self):
         color = self.image.getdata()
-        if self.ascii_text[:2]=="0b":
+        if self.ascii_text[:2] == "0b":
             self.ascii_text = self.ascii_text[2:]
-        file = '<p style="font-family: monospace;">'
+        file = '<p style="font-size: 10px; font-family: monospace;">'
         for line_no in range(self.h):
             for pixel in range(line_no*self.w, line_no*self.w + self.w):
                 file += self.span(self.ascii_text[pixel], color[pixel])
             file += '<br>'
         file += "</p>"
         self.ascii_html = file
-    
+
     def ascii_show(self):
         text = ""
         for line_no in range(self.h):
@@ -80,7 +82,7 @@ class TextArt:
             text += self.ascii_text[line_no*self.w:line_no*self.w + self.w] + "\n"
         with open(fname + ".txt", "w") as file:
             file.write(text)
-    
+
     def color_output(self, fname):
         with open(fname + ".html", "w") as file:
             file.write(self.ascii_html)

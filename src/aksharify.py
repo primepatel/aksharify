@@ -60,7 +60,7 @@ class TextArt:
         color = self.image.getdata()
         if self.ascii_text[:2]=="0b":
             self.ascii_text = self.ascii_text[2:]
-        file = '<p>'
+        file = '<p style="font-family: monospace;">'
         for line_no in range(self.h):
             for pixel in range(line_no*self.w, line_no*self.w + self.w):
                 file += self.span(self.ascii_text[pixel], color[pixel])

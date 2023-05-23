@@ -8,6 +8,7 @@
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
 [![LinkedIn][linkedin-shield]][linkedin-url]
+[![PyPI - Downloads][Downloads-shield]](https://pypistats.org/packages/aksharify)
 
 <br />
 
@@ -119,3 +120,4 @@ Project Link: [https://github.com/primepatel/aksharify](https://github.com/prime
 [license-url]: https://github.com/primepatel/Aksharify/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/primepatel
+[Downloads-shield]: https://img.shields.io/pypi/dm/aksharify?style=for-the-badge

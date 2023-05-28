@@ -111,7 +111,7 @@ class TextArt:
             file += '</text>'
             x = 20
             y += 20
-        #file += "</a>"
+        file += "</a>"
         file += "</svg>"
         self.ascii_svg = file
         

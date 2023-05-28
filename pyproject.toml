@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aksharify"
-version = "2.3.5"
+version = "2.5.2"
 authors = [
     {name="Prime Patel", email = "primespatel@gmail.com"}
 ]
@@ -12,7 +12,7 @@ description = "Ascii art module"
 readme = "README.md"
 requires-python = ">=3.8"
 
-dependencies = ["Pillow"]
+dependencies = ["Pillow", "cairosvg"]
 
 classifiers = [
     "Programming Language :: Python :: 3",

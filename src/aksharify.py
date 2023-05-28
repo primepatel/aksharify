@@ -1,4 +1,5 @@
 from PIL import Image
+from cairosvg import svg2png
 
 
 class TextArt:
@@ -118,3 +119,30 @@ class TextArt:
     def svg_output(self, fname):
         with open(fname + ".svg", "w") as file:
             file.write(self.ascii_svg)
+
+    def png_output(self, fname, height=None, width=None):
+        self.svgify()
+        if height==None and width != None:
+            svg2png(
+                bytestring=self.ascii_svg,
+                write_to= fname+'.png', 
+                output_width=width
+            )
+        elif width==None and height!=None:
+            svg2png(
+                bytestring=self.ascii_svg,
+                write_to= fname+'.png', 
+                output_height=height
+            )
+        elif height == None and width == None:
+            svg2png(
+                bytestring=self.ascii_svg,
+                write_to= fname+'.png'
+            )
+        else:
+            svg2png(
+                bytestring=self.ascii_svg,
+                write_to= fname+'.png',
+                output_height=height,
+                output_width=width
+            )

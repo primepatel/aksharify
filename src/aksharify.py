@@ -94,12 +94,12 @@ class TextArt:
     def rgb2hex(self, rgba):
         return '#{:02x}{:02x}{:02x}'.format(rgba[0], rgba[1], rgba[2])
     
-    def svgify(self):
+    def svgify(self, bg_color):
         color = self.image.getdata()
         if self.ascii_text[:2] == "0b":
             self.ascii_text = self.ascii_text[2:]
         file = f'<?xml version="1.0" standalone="no"?><svg width="{int(self.w*11.087)+41}" height="{int(self.h*20)+41}" version="1.1" xmlns="http://www.w3.org/2000/svg" style="font-family: monospace; background-color:#ffffff; font-size:20;"><desc>Aksharify Art</desc>'
-        #file += f'<rect x="20" y="20" width="{int(self.w*11.087)+21}" height="{int(self.h*20)+21}" fill="none" stroke="blue" stroke-width="2" />'
+        file += f'<rect width="100%" height="100%" fill="{bg_color}" />'
         file += f'<a href="https://primepatel.github.io/aksharify-docs/">'
         y = 30
         x = 20

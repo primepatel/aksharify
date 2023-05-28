@@ -95,7 +95,7 @@ class TextArt:
     def rgb2hex(self, rgba):
         return '#{:02x}{:02x}{:02x}'.format(rgba[0], rgba[1], rgba[2])
     
-    def svgify(self, bg_color):
+    def svgify(self, bg_color="None"):
         color = self.image.getdata()
         if self.ascii_text[:2] == "0b":
             self.ascii_text = self.ascii_text[2:]
@@ -120,8 +120,8 @@ class TextArt:
         with open(fname + ".svg", "w") as file:
             file.write(self.ascii_svg)
 
-    def png_output(self, fname, height=None, width=None):
-        self.svgify()
+    def png_output(self, fname, bg_color="None", height=None, width=None):
+        self.svgify(bg_color)
         if height==None and width != None:
             svg2png(
                 bytestring=self.ascii_svg,

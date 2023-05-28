@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aksharify"
-version = "2.2.7"
+version = "2.3.2"
 authors = [
     {name="Prime Patel", email = "primespatel@gmail.com"}
 ]

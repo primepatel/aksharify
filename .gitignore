@@ -1,5 +1,9 @@
-aksharify-docs
 src/dist
 src/aksharify/__pycache__/*
 src/test.ipynb
 test.ipynb
+
+__site/
+.DS_Store
+node_modules/
+package-lock.json

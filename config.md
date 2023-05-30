@@ -1,6 +1,6 @@
 @def generate_rss = false
 <!-- name of repository -->
-@def prepath = "aksharify-docs"
+@def prepath = "aksharify"
 +++
-prepath = "aksharify-docs"
+prepath = "aksharify"
 +++

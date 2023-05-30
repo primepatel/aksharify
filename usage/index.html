@@ -1,0 +1,35 @@
+<!doctype html> <html lang=en > <meta charset=UTF-8 > <meta name=viewport  content="width=device-width, initial-scale=1"> <link rel=stylesheet  href="/aksharify-docs/libs/highlight/styles/github.min.css"> <link rel=stylesheet  href="/aksharify-docs/css/franklin.css"> <link rel=stylesheet  href="/aksharify-docs/css/basic.css"> <link rel=icon  href="/aksharify-docs/assets/favicon.ico"> <title>Usage</title> <script src="/aksharify-docs/libs/darkmode/darkmode-js.min.js"></script> <script> function addDarkmodeWidget() { const options = { bottom: '32px', /* default: '32px' */ right: '32px', /* default: '32px' */ left: 'unset', /* default: 'unset' */ time: '.5s', /* default: '0.3s' */ mixColor: '#fff', /* default: '#fff' */ backgroundColor: '#fff', /* default: '#fff' */ buttonColorDark: '#100f2c', /* default: '#100f2c' */ buttonColorLight: '#fff', /* default: '#fff' */ saveInCookies: true, /* default: true, */ label: '🌓', /* default: '' */ autoMatchOsTheme: true /* default: true */ }; new Darkmode(options).showWidget(); }; window.addEventListener('DOMContentLoaded', addDarkmodeWidget); </script> <header> <div class=blog-name ><a href="/aksharify-docs/">Aksharify</a></div> <nav> <ul> <li><a href="/aksharify-docs/">Home</a> <li><a href="/aksharify-docs/usage/">Usage</a> <li><a href="/aksharify-docs/gallery/">Art Gallery</a> <li><a href="/aksharify-docs/projects/">Other Projects</a> </ul> <img src="/aksharify-docs/assets/hamburger.svg" id=menu-icon > </nav> </header> <div class=franklin-content > <h1 id=usage ><a href="#usage" class=header-anchor >Usage</a></h1> <div class=franklin-toc ><ol><li><a href="#usage">Usage</a><ol><li><a href="#importing_the_module">Importing the module</a><li><a href="#importing_the_image">Importing the Image</a><li><a href="#setting_the_dimension">Setting the dimension</a><li><a href="#generate_textart">Generate TextArt</a><li><a href="#see_the_result">See the result</a><li><a href="#save_the_result_in_txt">Save the Result in .txt</a><li><a href="#colored_output">Colored output</a><ol><li><a href="#save_the_result_in_html">Save the result in .html</a><li><a href="#save_the_result_in_png">Save the result in .png</a></ol></ol></ol></div> <h2 id=importing_the_module ><a href="#importing_the_module" class=header-anchor >Importing the module</a></h2> <p>Make sure you have installed the module</p> <pre><code class="python hljs"><span class=hljs-keyword >from</span> aksharify <span class=hljs-keyword >import</span> TextArt</code></pre>
+<h2 id=importing_the_image ><a href="#importing_the_image" class=header-anchor >Importing the Image</a></h2>
+<p>Make sure image is in your working directory or provide absolute path to the image file</p>
+<pre><code class="python hljs"><span class=hljs-comment ># input image file</span>
+art = TextArt(<span class=hljs-string >&quot;julia.png&quot;</span>)</code></pre>
+<h2 id=setting_the_dimension ><a href="#setting_the_dimension" class=header-anchor >Setting the dimension</a></h2>
+<pre><code class="python hljs"><span class=hljs-comment ># set dimension of output text</span>
+art.set_dim(<span class=hljs-number >80</span>)</code></pre>
+<h2 id=generate_textart ><a href="#generate_textart" class=header-anchor >Generate TextArt</a></h2>
+<pre><code class="python hljs"><span class=hljs-comment ># genetate text</span>
+art.asciify()</code></pre>
+<h2 id=see_the_result ><a href="#see_the_result" class=header-anchor >See the result</a></h2>
+<pre><code class="python hljs">art.show_art()</code></pre>
+<h2 id=save_the_result_in_txt ><a href="#save_the_result_in_txt" class=header-anchor >Save the Result in .txt</a></h2>
+<pre><code class="python hljs"><span class=hljs-comment ># output into .txt file</span>
+art.text_output(<span class=hljs-string >&quot;output&quot;</span>)</code></pre>
+<h2 id=colored_output ><a href="#colored_output" class=header-anchor >Colored output</a></h2>
+<pre><code class="python hljs"><span class=hljs-comment ># generate colored text using html</span>
+art.colorify()</code></pre>
+<h3 id=save_the_result_in_html ><a href="#save_the_result_in_html" class=header-anchor >Save the result in .html</a></h3>
+<pre><code class="python hljs"><span class=hljs-comment ># output into .html file</span>
+art.color_output(<span class=hljs-string >&quot;output&quot;</span>)</code></pre>
+<h3 id=save_the_result_in_png ><a href="#save_the_result_in_png" class=header-anchor >Save the result in .png</a></h3>
+<pre><code class="python hljs"><span class=hljs-comment ># output into .html file</span>
+art.png_output(<span class=hljs-string >&quot;output&quot;</span>)</code></pre>
+<div class=page-foot >
+    Website built with <a href="https://github.com/tlienart/Franklin.jl">Franklin.jl</a> and the <a href="https://julialang.org">Julia programming language</a>.
+</div></div>
+    
+    
+        <script src="/aksharify-docs/libs/highlight/highlight.min.js"></script>
+<script>hljs.highlightAll();hljs.configure({tabReplace: '    '});</script>
+
+    
+    <script src="/aksharify-docs/libs/darkmode/darkmode.js"></script>

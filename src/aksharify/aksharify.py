@@ -1,11 +1,23 @@
 # -*- coding: utf-8-*-
 
 from PIL import Image
+import requests
+from io import BytesIO
 
 
 SVG_HEADER = '<?xml version="1.0" standalone="no"?><svg width="{}" height="{}" version="1.1" xmlns="http://www.w3.org/2000/svg" style="font-family: {}; font-size:{};"><desc>Aksharify Art</desc><rect width="100%" height="100%" fill="{}"/>'
 HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify-docs/">{}</a></body></html>'
 SORTEDCHARS = """ `.-_',~:*;!"^/\+><r=?()|7LxtcYivTljsz[]1Jnufy{}oI#FC4VX2ehk3aZw5ASbdpqUP6%9G8mKO&0EDHg$MWRNQB@"""
+
+def URLtoImg(url):
+    response = requests.get(url)
+    image_data = response.content
+    try:
+        Image.open(BytesIO(image_data))
+        return BytesIO(image_data)
+    except:
+        print("The provided URL does not correspond to an image.")
+
 
 class AksharArt:
     
@@ -15,6 +27,7 @@ class AksharArt:
         self.chars = list(set(chars))
         self.CH_CONSTANT = 2.143
         self.H_dis, self.V_dis = 11.1, 20
+        self.font_size = 20
 
     def set_dim(self, width=None, height=None):
         if width != None and height == None:
@@ -75,7 +88,7 @@ class AksharArt:
         file = SVG_HEADER.format(
             int(self.w*self.H_dis)+41, 
             int(self.h*self.V_dis)+41,
-            "monospace", 20, bg_color
+            "monospace", self.font_size, bg_color
             )
         file += f'<a href="https://primepatel.github.io/aksharify-docs/">'
         x, y = 20, 30
@@ -111,7 +124,7 @@ class AksharArt:
             file.write(self.ascii_html)
 
     def svg_output(self, fname):
-        with open(fname + ".svg", "w") as file:
+        with open(fname + ".svg", "w", encoding="utf-8-sig") as file:
             file.write(self.ascii_svg)
     
     def png_output(self, fname, svg2png, bg_color="None", height=None, width=None):
@@ -126,12 +139,13 @@ class AksharArt:
             svg2png(bytestring=self.ascii_svg,write_to=fname+'.png',output_height=height,output_width=width)
 
 
-class TextArt(AksharArt):
-    """_summary_
+class EmojiArt(AksharArt):
+    def __init__(self, image, chars="🙂😅") -> None:
+        super().__init__(image, chars)
+        self.H_dis = 20
 
-    Args:
-        AksharArt (_type_): _description_
-    """
+class TextArt(AksharArt):
+    
     def __init__(self, image, chars=SORTEDCHARS, ordered=False) -> None:
         super().__init__(image)
         self.chars = list(set(chars))

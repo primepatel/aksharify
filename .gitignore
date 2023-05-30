@@ -1,2 +1,5 @@
 aksharify-docs
 src/dist
+src/aksharify/__pycache__/*
+src/test.ipynb
+test.ipynb

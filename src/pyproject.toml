@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aksharify"
-version = "2.7.2"
+version = "2.7.3"
 description = "Python Ascii + Emoji Art Module"
 authors = ["Prime Patel <primespatel@gmail.com>"]
 license = "MIT"
@@ -22,6 +22,7 @@ classifiers=[
 [tool.poetry.dependencies]
 python = "^3.10"
 pillow = "^9.5.0"
+requests = "^2.31.0"
 
 
 [build-system]

@@ -26,8 +26,13 @@ class AksharArt:
         self.w, self.h = self.image.size
         self.chars = list(set(chars))
         self.CH_CONSTANT = 2.143
-        self.H_dis, self.V_dis = 11.1, 20
-        self.font_size = 20
+        self.H_dis, self.V_dis = 5.55, 10
+        self.font_size = 10
+    
+    def set_font_size(self, size):
+        self.H_dis = (size*555)/1000
+        self.V_dis = size
+        self.font_size = size
 
     def set_dim(self, width=None, height=None):
         if width != None and height == None:
@@ -81,10 +86,13 @@ class AksharArt:
     def tspan(self, char, char_color, x):
         return f'<tspan x="{x}" fill="{char_color}">{char}</tspan>'
     
+    def btspan(self, char, char_color, x):
+        return f'<tspan x="{x}" fill="{char_color}" font-weight="bold">{char}</tspan>'
+    
     def rgb2hex(self, rgba):
         return '#{:02x}{:02x}{:02x}'.format(rgba[0], rgba[1], rgba[2])
 
-    def svgify(self, bg_color="None"):
+    def svgify(self, bg_color="None", bold=False):
         file = SVG_HEADER.format(
             int(self.w*self.H_dis)+41, 
             int(self.h*self.V_dis)+41,
@@ -92,10 +100,14 @@ class AksharArt:
             )
         file += f'<a href="https://primepatel.github.io/aksharify-docs/">'
         x, y = 20, 30
+        if bold == False:
+            char_func = self.tspan
+        else:
+            char_func = self.btspan
         for line_no in range(self.h):
             file += f'<text x="{x}" y="{y}">'
             for char_no in range(self.w):
-                file += self.tspan(
+                file += char_func(
                     self.matrix[line_no][char_no],
                     self.rgb2hex(self.image.getpixel((char_no, line_no))), x
                     )
@@ -143,6 +155,11 @@ class EmojiArt(AksharArt):
     def __init__(self, image, chars="🙂😅") -> None:
         super().__init__(image, chars)
         self.H_dis = 20
+    
+    def set_font_size(self, size):
+        self.H_dis = size
+        self.V_dis = size
+        self.font_size = size
 
 class TextArt(AksharArt):
     

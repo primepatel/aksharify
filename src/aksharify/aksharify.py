@@ -21,7 +21,7 @@ def URLtoImg(url: str) -> Image:
 
 class AksharArt:
     
-    def __init__(self, image, chars="01") -> None:
+    def __init__(self, image:Image, chars:str="01") -> None:
         self.image = Image.open(image)
         self.w, self.h = self.image.size
         self.chars = list(set(chars))
@@ -111,7 +111,7 @@ class AksharArt:
             file += f'<text x="{x}" y="{y}">'
             for char_no in range(self.w):
                 file += char_func(
-                    self.matrix[line_no][char_no],
+                    f"&#{ord(self.matrix[line_no][char_no])};",
                     self.rgb2hex(self.image.getpixel((char_no, line_no))), x
                     )
                 x += self.H_dis
@@ -131,7 +131,7 @@ class AksharArt:
         for line_no in range(self.h):
             for char_no in range(self.w):
                 html_content += span(
-                    self.matrix[line_no][char_no], 
+                    f"&#{ord(self.matrix[line_no][char_no])};", 
                     self.image.getpixel((char_no, line_no))
                     )
             html_content += '<br>'
@@ -159,7 +159,7 @@ class AksharArt:
 
 
 class EmojiArt(AksharArt):
-    def __init__(self, image, chars="🙂😅") -> None:
+    def __init__(self, image:Image, chars:str= "🙂😅") -> None:
         super().__init__(image, chars)
         self.H_dis = 20
     
@@ -177,7 +177,7 @@ class TextArt(AksharArt):
             chars = []
             for char in SORTEDCHARS:
                 if char in self.chars:
-                    chars.append(f"&#{ord(char)};")
+                    chars.append(char)
             self.chars = chars
 
 

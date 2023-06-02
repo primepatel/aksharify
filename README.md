@@ -81,9 +81,9 @@ _For examples from user community, please refer to the [primepatel.github.io/aks
 ## Roadmap
 
 - [x] NumberiFy
-- [-] Predifined order of characters
-- [-] Getting images from URL
-- [-] EmojiFy
+- [ ] Predifined order of characters
+- [ ] Getting images from URL
+- [ ] EmojiFy
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 

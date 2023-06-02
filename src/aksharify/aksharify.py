@@ -6,7 +6,7 @@ from io import BytesIO
 
 
 SVG_HEADER = '<?xml version="1.0" standalone="no"?><svg width="{}" height="{}" version="1.1" xmlns="http://www.w3.org/2000/svg" style="font-family: {}; font-size:{};"><desc>Aksharify Art</desc><rect width="100%" height="100%" fill="{}"/>'
-HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify-docs/">{}</a></body></html>'
+HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify/">{}</a></body></html>'
 SORTEDCHARS = """ `.-_',~:*;!"^/\+><r=?()|7LxtcYivTljsz[]1Jnufy{}oI#FC4VX2ehk3aZw5ASbdpqUP6%9G8mKO&0EDHg$MWRNQB@"""
 
 def URLtoImg(url: str) -> Image:
@@ -101,7 +101,7 @@ class AksharArt:
             int(self.h*self.V_dis)+41,
             "monospace", self.font_size, bg_color
             )
-        file += f'<a href="https://primepatel.github.io/aksharify-docs/">'
+        file += f'<a href="https://primepatel.github.io/aksharify/">'
         x, y = 20, 30
         if bold == False:
             char_func = self.tspan

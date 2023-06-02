@@ -9,7 +9,7 @@ SVG_HEADER = '<?xml version="1.0" standalone="no"?><svg width="{}" height="{}" v
 HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify-docs/">{}</a></body></html>'
 SORTEDCHARS = """ `.-_',~:*;!"^/\+><r=?()|7LxtcYivTljsz[]1Jnufy{}oI#FC4VX2ehk3aZw5ASbdpqUP6%9G8mKO&0EDHg$MWRNQB@"""
 
-def URLtoImg(url):
+def URLtoImg(url: str) -> Image:
     response = requests.get(url)
     image_data = response.content
     try:
@@ -29,12 +29,12 @@ class AksharArt:
         self.H_dis, self.V_dis = 5.55, 10
         self.font_size = 10
     
-    def set_font_size(self, size):
+    def set_font_size(self, size: int) -> None:
         self.H_dis = (size*555)/1000
         self.V_dis = size
         self.font_size = size
 
-    def set_dim(self, width=None, height=None):
+    def set_dim(self, width:int=None, height:int=None) -> None:
         if width != None and height == None:
             self.w, self.h = width, int(
                 (self.h/self.w * width)/self.CH_CONSTANT)
@@ -45,7 +45,7 @@ class AksharArt:
             self.w, self.h = width, height
         self.image = self.image.resize((self.w, self.h))
 
-    def asciify(self):
+    def asciify(self) -> None:
         self.matrix = []
         div = 255/(len(self.chars))
         bwdata = self.image.convert('L').getdata()
@@ -55,13 +55,13 @@ class AksharArt:
                 line.append(self.chars[int(bwdata[pixel]/div) - 1])
             self.matrix.append(line)
     
-    def replace_char(self, char, x, y):
+    def replace_char(self, char:str, x:int, y:int)-> None:
         if x<self.w and y<self.h:
             self.matrix[y][x] = char
         else:
             raise IndexError
 
-    def replace_chars(self, chars, x, y):
+    def replace_chars(self, chars:str, x:int, y:int) -> None:
         if x>self.w or y>self.h:
             raise TypeError
         if self.w - x >= len(chars):
@@ -73,26 +73,29 @@ class AksharArt:
             self.replace_chars(chars[:self.w-x], x, y)
             self.replace_chars(chars[self.w-x:], 0, y+1)
 
-    def txt_output(self, fname):
+    def txt_output(self, fname:str) -> None:
         text = ""
         for line_no in range(self.h):
             text += "".join(self.matrix[line_no]) + "\n"
         with open(fname + ".txt", "w") as file:
             file.write(text)
             
-    def span(self, integer, integer_colour):
-        return f"<span style='color: rgb{integer_colour};'><b>{integer}</b></span>"
+    def bspan(self, char:str, char_colour:tuple) -> str:
+        return f"<span style='color: rgb{char_colour};'><b>{char}</b></span>"
+    
+    def span(self, char:str, char_colour:tuple) -> str:
+        return f"<span style='color: rgb{char_colour};'>{char}</span>"
 
-    def tspan(self, char, char_color, x):
+    def tspan(self, char:str, char_color:str, x:float) -> str:
         return f'<tspan x="{x}" fill="{char_color}">{char}</tspan>'
     
-    def btspan(self, char, char_color, x):
+    def btspan(self, char:str, char_color:str, x:float) -> str:
         return f'<tspan x="{x}" fill="{char_color}" font-weight="bold">{char}</tspan>'
     
-    def rgb2hex(self, rgba):
+    def rgb2hex(self, rgba:tuple) -> str:
         return '#{:02x}{:02x}{:02x}'.format(rgba[0], rgba[1], rgba[2])
 
-    def svgify(self, bg_color="None", bold=False):
+    def svgify(self, bg_color:str="None", bold:bool=False) -> None:
         file = SVG_HEADER.format(
             int(self.w*self.H_dis)+41, 
             int(self.h*self.V_dis)+41,
@@ -119,11 +122,15 @@ class AksharArt:
         file += "</svg>"
         self.ascii_svg = file
 
-    def htmlify(self):
+    def htmlify(self, bold:bool=False) -> None:
         html_content = '<p style="font-size: 10px; font-family: monospace;">'
+        if bold == True:
+            span = self.bspan
+        else:
+            span = self.span
         for line_no in range(self.h):
             for char_no in range(self.w):
-                html_content += self.span(
+                html_content += span(
                     self.matrix[line_no][char_no], 
                     self.image.getpixel((char_no, line_no))
                     )
@@ -131,15 +138,15 @@ class AksharArt:
         html_content += "</p>"
         self.ascii_html = HTML_HEADER.format(html_content)
     
-    def html_output(self, fname):
+    def html_output(self, fname:str) -> None:
         with open(fname + ".html", "w") as file:
             file.write(self.ascii_html)
 
-    def svg_output(self, fname):
+    def svg_output(self, fname:str) -> None:
         with open(fname + ".svg", "w", encoding="utf-8-sig") as file:
             file.write(self.ascii_svg)
     
-    def png_output(self, fname, svg2png, bg_color="None", height=None, width=None):
+    def png_output(self, fname:str, svg2png, bg_color:str="None", height:int=None, width:int=None) -> None:
         self.svgify(bg_color)
         if height == None and width != None:
             svg2png(bytestring=self.ascii_svg,write_to=fname+'.png',output_width=width)
@@ -156,14 +163,14 @@ class EmojiArt(AksharArt):
         super().__init__(image, chars)
         self.H_dis = 20
     
-    def set_font_size(self, size):
+    def set_font_size(self, size:float) -> None:
         self.H_dis = size
         self.V_dis = size
         self.font_size = size
 
 class TextArt(AksharArt):
     
-    def __init__(self, image, chars=SORTEDCHARS, ordered=False) -> None:
+    def __init__(self, image:Image, chars:str=SORTEDCHARS, ordered:bool=False) -> None:
         super().__init__(image)
         self.chars = list(set(chars))
         if not ordered:
@@ -176,25 +183,24 @@ class TextArt(AksharArt):
 
 class NumberArt(AksharArt):
 
-    def __init__(self, image, numbers= "0123456789") -> None:
+    def __init__(self, image:Image, numbers:str="0123456789") -> None:
         super().__init__(image, numbers)
         for i in self.chars:
             if not i.isnumeric():
                 raise TypeError
         self.numbers = self.chars
 
-    def numberify(self, first_num=0):
+    def numberify(self, first_num:int=0) -> None:
         self.asciify()
         if first_num != 0:
             self.matrix[0][0] = first_num
-        return self.ascii_text
 
 class PrimeArt(NumberArt):
     
-    def __init__(self, image) -> None:
+    def __init__(self, image:Image) -> None:
         super().__init__(image, "01")
     
-    def binary_to_decimal(self, binary):
+    def binary_to_decimal(self, binary:str) -> int:
         decimal = 0
         l = len(binary)
         for x in binary:
@@ -202,10 +208,11 @@ class PrimeArt(NumberArt):
             decimal += pow(2, l) * int(x)
         return int(decimal)
     
-    def primify(self, prime, asis=True, func=bin):
-        if not asis and len(bin(int(prime))) == len(func(self.ascii_text)):
-            self.ascii_text = func(int(prime))
-        elif len(str(int(prime))) == len(self.ascii_text):
-            self.ascii_text = str(prime)
-        else:
-            print("not primified")
+    # Avoid using self.asciitext
+    # def primify(self, prime, asis=True, func=bin):
+    #     if not asis and len(bin(int(prime))) == len(func(self.ascii_text)):
+    #         self.ascii_text = func(int(prime))
+    #     elif len(str(int(prime))) == len(self.ascii_text):
+    #         self.ascii_text = str(prime)
+    #     else:
+    #         print("not primified")

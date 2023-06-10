@@ -55,6 +55,10 @@ class AksharArt:
                 line.append(self.chars[int(bwdata[pixel]/div) - 1])
             self.matrix.append(line)
     
+    def asciify(self, ext):
+        
+        return True
+    
     def replace_char(self, char:str, x:int, y:int)-> None:
         if x<self.w and y<self.h:
             self.matrix[y][x] = char

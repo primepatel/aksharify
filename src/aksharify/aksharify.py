@@ -6,7 +6,7 @@ from io import BytesIO
 
 
 SVG_HEADER = '<?xml version="1.0" standalone="no"?><svg width="{}" height="{}" version="1.1" xmlns="http://www.w3.org/2000/svg" style="font-family: {}; font-size:{};"><desc>Aksharify Art</desc><rect width="100%" height="100%" fill="{}"/>'
-HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify/">{}</a></body></html>'
+HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify/" style="text-decoration: none">{}</a></body></html>'
 SORTEDCHARS = """ `.-_',~:*;!"^/\+><r=?()|7LxtcYivTljsz[]1Jnufy{}oI#FC4VX2ehk3aZw5ASbdpqUP6%9G8mKO&0EDHg$MWRNQB@"""
 
 def URLtoImg(url: str) -> Image:
@@ -25,7 +25,7 @@ class AksharArt:
         self.image = Image.open(image)
         self.w, self.h = self.image.size
         self.chars = list(set(chars))
-        self.CH_CONSTANT = 2.143
+        self.CH_CONSTANT = 1.78
         self.H_dis, self.V_dis = 5.55, 10
         self.font_size = 10
     
@@ -55,10 +55,6 @@ class AksharArt:
                 line.append(self.chars[int(bwdata[pixel]/div) - 1])
             self.matrix.append(line)
     
-    def asciify(self, ext):
-        
-        return True
-    
     def replace_char(self, char:str, x:int, y:int)-> None:
         if x<self.w and y<self.h:
             self.matrix[y][x] = char
@@ -66,8 +62,9 @@ class AksharArt:
             raise IndexError
 
     def replace_chars(self, chars:str, x:int, y:int) -> None:
+        x, y = abs(x), abs(y)
         if x>self.w or y>self.h:
-            raise TypeError
+            raise IndexError
         if self.w - x >= len(chars):
             for i in range(x, x + len(chars)):
                 self.replace_char(

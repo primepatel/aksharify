@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "aksharify"
-version = "2.7.11"
+version = "2.7.13"
 description = "Python Ascii + Emoji Art Module"
 authors = ["Prime Patel <primespatel@gmail.com>"]
 license = "MIT"

@@ -7,8 +7,7 @@
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
 [![MIT License][license-shield]][license-url]
-[![LinkedIn][linkedin-shield]][linkedin-url]
-[![PyPI - Downloads][Downloads-shield]](https://pypistats.org/packages/aksharify)
+[![PyPI - Downloads][Downloads-shield]](https://pypistats.org/packages/aksharify) 
 
 <br />
 
@@ -16,7 +15,6 @@
 
 Aksharify is an open-source python package hosted on GitHub that allows you to effortlessly transform images into captivating ASCII art representations. With Aksharify, you can convert your favorite images into an artistic arrangement of ASCII characters, adding a unique and nostalgic touch to your projects.
 
-Start transforming your photos into captivating ASCII art with Aksharify and unleash your creativity in the world of visual representation!
 ## Key Features
 
 - Convert photos and images into ASCII art with a single function call.
@@ -27,9 +25,11 @@ Start transforming your photos into captivating ASCII art with Aksharify and unl
 
 - Export the ASCII art as plain text or save it as an image file for easy sharing and integration.
 
+Start transforming your photos into captivating ASCII art with Aksharify and unleash your creativity in the world of visual representation!
+
 ## What is AsciiArt
 
-ASCII art is a style of art in which people make graphics and designs by using letters, numbers, and symbols from a unique set of characters known as ASCII. ASCII painters create intriguing images by arranging these characters in patterns and forms rather than using colours and brushes as in traditional art. They meticulously select the appropriate characters and combine them to produce images of animals, people, or even landscapes. It's almost as if you're sketching with letters and symbols! ASCII art is a fun way for artists to express themselves using only the basic characters present on a computer keyboard.
+ASCII art is a style of art in which people make graphics and designs by using letters, numbers, and symbols. ASCII painters create intriguing images by arranging these characters in patterns and forms rather than using colours and brushes as in traditional art. They meticulously select the appropriate characters and combine them to produce images of animals, people, or even landscapes. It's almost as if you're sketching with letters and symbols! ASCII art is a fun way for artists to express themselves using only the basic characters present on a computer keyboard.
 
 <!-- ABOUT THE PROJECT -->
 ## Motivation
@@ -65,13 +65,13 @@ art.set_dim(80)
 art.asciify()
 
 # output into .txt file
-art.text_output("output")
+art.txt_output("output")
 
-# generate colored text using html
-art.colorify()
+# generate colored text using svg
+art.svgify()
 
-# output into .html file
-art.color_output("output")
+# output into .svg file
+art.svg_output("output")
 ```
 
 _For examples from user community, please refer to the [primepatel.github.io/aksharify](https://primepatel.github.io/aksharify)_
@@ -81,9 +81,9 @@ _For examples from user community, please refer to the [primepatel.github.io/aks
 ## Roadmap
 
 - [x] NumberiFy
-- [-] Predifined order of characters
-- [-] Getting images from URL
-- [-] EmojiFy
+- [ ] Predifined order of characters
+- [ ] Getting images from URL
+- [ ] EmojiFy
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
@@ -107,9 +107,14 @@ Don't forget to give the project a star! Thanks again!
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 <!-- CONTACT -->
-## Contact
+# Contact 
 
-Prime Patel - [@primepatel](https://twitter.com/primespatel) - primespatel@gmail.com
+[![LinkedIn][linkedin-shield]][linkedin-url]
+[![Twitter][twitter-shield]][twitter-url]
+
+Follow me on LinkedIn for future updates.
+
+Prime Patel - [@primespatel](https://twitter.com/primespatel) - primespatel@gmail.com
 
 Project Link: [https://github.com/primepatel/aksharify](https://github.com/primepatel/aksharify)
 
@@ -137,6 +142,13 @@ Project Link: [https://github.com/primepatel/aksharify](https://github.com/prime
 [issues-url]: https://github.com/primepatel/Aksharify/issues
 [license-shield]: https://img.shields.io/github/license/primepatel/Aksharify.svg?style=for-the-badge
 [license-url]: https://github.com/primepatel/Aksharify/blob/master/LICENSE.txt
-[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
+
+[linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/primepatel
+
+
+[twitter-shield]: https://img.shields.io/badge/-Twitter-black.svg?logo=twitter&colorB=555
+[twitter-url]: https://linkedin.com/in/primespatel
+
+
 [Downloads-shield]: https://img.shields.io/pypi/dm/aksharify?style=for-the-badge

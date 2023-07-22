@@ -2,6 +2,9 @@ LINK = "https://primepatel.github.io/aksharify/"
 SVG_HEADER = '<?xml version="1.0" standalone="no"?><svg width="{}" height="{}" version="1.1" xmlns="http://www.w3.org/2000/svg" style="font-family: {}; font-size:{};"><desc>Aksharify Art</desc><rect width="100%" height="100%" fill="{}"/>'
 HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Aksharify Art</title></head><body><a href="https://primepatel.github.io/aksharify/" style="text-decoration: none">{}</a></body></html>'
 
+class TXT:
+    def __init__(self) -> None:
+        self.title = None
 
 class HTML:
     

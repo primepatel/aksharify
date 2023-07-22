@@ -47,11 +47,11 @@ class AksharArt:
             self.replace_chars(chars[:w-x], x, y)
             self.replace_chars(chars[w-x:], 0, y+1)
 
-    def txt_output(self, fname:str) -> None:
+    def txt_output(self, config) -> None:
         text = ""
         for line_no in range(self.image.bwimg.shape[0]):
             text += "".join(self.matrix[line_no]) + "\n"
-        with open(fname + ".txt", "w") as file:
+        with open(config.file_name + ".txt", "w") as file:
             file.write(text)
 
     def svg_output(self, config):

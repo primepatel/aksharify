@@ -28,7 +28,7 @@ class Image:
             plt.imshow(self.bwimg, cmap='gray')
         plt.show()
 
-    def set_dim(self, width:int=None, height:int=None):
+    def resize(self, width:int=None, height:int=None):
         if width != None and height == None:
             w, h = width, int((self.h/self.w * width)/self.CH_CONSTANT)
         elif width == None and height != None:

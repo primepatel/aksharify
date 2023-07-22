@@ -4,7 +4,7 @@ import matplotlib.pyplot as plt
 SORTEDCHARS = """ `.-_',~:*;!"^/\+><r=?()|7LxtcYivTljsz[]1Jnufy{}oI#FC4VX2ehk3aZw5ASbdpqUP6%9G8mKO&0EDHg$MWRNQB@"""
 
 class Dist:
-    def __init__(self, chars, unique=True, order=False) -> None:
+    def __init__(self, chars, order=False, unique=False) -> None:
         if unique:
             self.chars = []
             for char in chars:
@@ -72,7 +72,7 @@ class Dist:
 
 
 class Linear(Dist):
-    def __init__(self, chars, unique=True, order=False) -> None:
+    def __init__(self, chars, order=False, unique=False) -> None:
         super().__init__(chars, unique, order)
         num = 255/len(self.chars)
         self.list = [0]
@@ -84,7 +84,7 @@ class Linear(Dist):
         self.generate_char_dict()
 
 class Exponential(Linear):
-    def __init__(self, chars, power, unique=True, order=False) -> None:
+    def __init__(self, chars, power, order=False, unique=False) -> None:
         super().__init__(chars, unique, order)
         self.hex_to_normal()
         self.list = self.list**power
@@ -93,7 +93,7 @@ class Exponential(Linear):
         self.generate_char_dict()  
         
 class Normal(Linear):
-    def __init__(self, chars, mean, var, unique=True, order=False) -> None:
+    def __init__(self, chars, mean, var, order=False, unique=False) -> None:
         super().__init__(chars, unique, order)
         self.mean = mean
         self.var = var

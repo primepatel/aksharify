@@ -1,0 +1,27 @@
+{#-
+  This file was automatically generated - do not edit
+-#}
+{% extends "base.html" %}
+{% block extrahead %}
+  <link rel="stylesheet" href="{{ 'assets/stylesheets/custom.f7ec4df2.min.css' | url }}">
+{% endblock %}
+{% block announce %}
+  For updates follow <strong>@primepatel</strong> on
+  <a rel="me" href="https://www.linkedin.com/in/primepatel/">
+    <span class="twemoji LinkedIn" style="color: #0A66C2;">
+      {% include ".icons/fontawesome/brands/LinkedIn.svg" %}
+    </span>
+    <strong>LinkedIn</strong>
+  </a>
+  and
+  <a href="https://twitter.com/primespatel">
+    <span class="twemoji twitter">
+      {% include ".icons/fontawesome/brands/twitter.svg" %}
+    </span>
+    <strong>Twitter</strong>
+  </a>
+{% endblock %}
+{% block scripts %}
+  {{ super() }}
+  <script src="{{ 'assets/javascripts/custom.a1e08cb1.min.js' | url }}"></script>
+{% endblock %}

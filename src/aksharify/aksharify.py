@@ -37,14 +37,15 @@ class AksharArt:
 
     def replace_chars(self, chars:str, x:int, y:int) -> None:
         x, y = abs(x), abs(y)
-        if x>self.image.w or y>self.image.h:
+        w, h = self.image.bwimg.shape[1], self.image.bwimg.shape[0]
+        if x>w or y>h:
             raise IndexError
-        if self.image.w - x >= len(chars):
+        if w - x >= len(chars):
             for i in range(x, x + len(chars)):
                 self.replace_char(chars[i-x], i, y)
         else:
-            self.replace_chars(chars[:self.image.w-x], x, y)
-            self.replace_chars(chars[self.image.w-x:], 0, y+1)
+            self.replace_chars(chars[:w-x], x, y)
+            self.replace_chars(chars[w-x:], 0, y+1)
 
     def txt_output(self, fname:str) -> None:
         text = ""

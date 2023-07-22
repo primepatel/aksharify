@@ -30,21 +30,21 @@ class AksharArt:
             ipd.display(ipd.SVG(art))
     
     def replace_char(self, char:str, x:int, y:int)-> None:
-        if x<self.w and y<self.h:
+        if x<self.image.w and y<self.image.h:
             self.matrix[y][x] = char
         else:
             raise IndexError
 
     def replace_chars(self, chars:str, x:int, y:int) -> None:
         x, y = abs(x), abs(y)
-        if x>self.w or y>self.h:
+        if x>self.image.w or y>self.image.h:
             raise IndexError
-        if self.w - x >= len(chars):
+        if self.image.w - x >= len(chars):
             for i in range(x, x + len(chars)):
                 self.replace_char(chars[i-x], i, y)
         else:
-            self.replace_chars(chars[:self.w-x], x, y)
-            self.replace_chars(chars[self.w-x:], 0, y+1)
+            self.replace_chars(chars[:self.image.w-x], x, y)
+            self.replace_chars(chars[self.image.w-x:], 0, y+1)
 
     def txt_output(self, fname:str) -> None:
         text = ""

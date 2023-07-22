@@ -1,2 +1,5 @@
 docs/overrides/hooks/__pycache__/
 dist/
+src/aksharify/__pycache__
+src/test.ipynb
+site/

@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "aksharify"
-version = "0.1.1"
+version = "0.1.2"
 description = "Ascii Art + Emoji Art python Package"
 authors = ["Prime Patel <primespatel@gmail.com>"]
 readme = "README.md"
 packages = [{include = "aksharify", from = "src"}]
-license = "LICENSE.md"
+license = "MIT"
 homepage = "https://primepatel.github.io/aksharify/"
 repository = "https://github.com/primepatel/aksharify"
 keywords = ["Ascii Art","Emoji Art","Prime Patel","primepatel"]

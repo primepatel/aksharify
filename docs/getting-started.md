@@ -44,8 +44,8 @@ from aksharify.outputs import SVG
 ```
 
 ```python
-image = Image("..\images\julia1.png")
-image.set_dim(200)
+image = Image("images\julia1.png")
+image.resize(200)
 image.show()
 ```
 
@@ -61,7 +61,7 @@ art.aksharify(show=True)
 
 ```python
 config = SVG()
-config.file_name = "..\\art"
+config.file_name = "art"
 config.bold = True
 ```
 

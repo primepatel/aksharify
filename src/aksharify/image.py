@@ -6,12 +6,12 @@ from io import BytesIO
 
 class Image:
 
-    def __init__(self, image=None, url=None) -> None:
+    def __init__(self, path=None, url=None) -> None:
         self.CH_CONSTANT = 1.78
-        if image and url:
+        if path and url:
             raise ValueError("Provide image or link to the Image")
-        elif image:
-            self.obj = ski.io.imread(image)
+        elif path:
+            self.obj = ski.io.imread(path)
         else:
             response = requests.get(url)
             image_data = response.content
@@ -20,9 +20,9 @@ class Image:
         self.bwimg = ski.color.rgb2gray(self.obj[:,:,:3])
         self.w, self.h = self.obj.shape[1], self.obj.shape[0]
         
-    def show(self, bw=False):
+    def show(self, grayscale=False):
         plt.axis('off')
-        if not bw:
+        if not grayscale:
             plt.imshow(self.image)
         else:
             plt.imshow(self.bwimg, cmap='gray')

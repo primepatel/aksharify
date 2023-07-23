@@ -4,11 +4,13 @@ HTML_HEADER = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta 
 
 class TXT:
     def __init__(self) -> None:
+        self.type = 'TXT'
         self.title = None
 
 class HTML:
     
     def __init__(self):
+        self.type = 'HTML'
         self.title = "Aksharify Art"
         self.link = LINK # not added yet
         self.font_family = "monospace"
@@ -44,6 +46,7 @@ class HTML:
 class SVG:
     
     def __init__(self):
+        self.type = 'SVG'
         self.font_family = "monospace"
         self.font_size = 10
         self.background_color = "#ffffff"
@@ -100,6 +103,7 @@ class SVG:
 class PNG(SVG):
     def __init__(self) -> None:
         super().__init__()
+        self.type = 'PNG'
         self.width = None
         self.height = None
         
@@ -110,6 +114,7 @@ class PNG(SVG):
 class PDF(SVG):
     def __init__(self) -> None:
         super().__init__()
+        self.type = 'PDF'
         
     def generate_svg(self, matrix, image) -> None:
         return self.generate_art(matrix, image)
@@ -118,6 +123,7 @@ class PDF(SVG):
 class EPS(SVG):
     def __init__(self) -> None:
         super().__init__()
+        self.type = 'EPS'
         
     def generate_svg(self, matrix, image) -> None:
         return self.generate_art(matrix, image)

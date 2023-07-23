@@ -19,15 +19,17 @@ class AksharArt:
             line = []
             for y in range(self.image.bwimg.shape[1]):
                 line.append(self.dist.char_dict[int(self.image.bwimg[x, y]*255)])
-            self.matrix.append(line)
-        
+            self.matrix.append(line) 
         if show:
-            svg = SVG()
-            svg.background_color = "#ffffff"
-            svg.bold = False
-            svg.fill_color = "#000000"
-            art = svg.generate_art(self.matrix, self.image.image)
-            ipd.display(ipd.SVG(art))
+            self.show()
+    
+    def show(self):
+        svg = SVG()
+        svg.background_color = "#ffffff"
+        svg.bold = False
+        svg.fill_color = "#000000"
+        art = svg.generate_art(self.matrix, self.image.image)
+        ipd.display(ipd.SVG(art))
     
     def replace_char(self, char:str, x:int, y:int)-> None:
         if x<self.image.w and y<self.image.h:

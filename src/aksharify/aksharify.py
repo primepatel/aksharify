@@ -46,6 +46,38 @@ class AksharArt:
         else:
             self.replace_chars(chars[:w-x], x, y)
             self.replace_chars(chars[w-x:], 0, y+1)
+    
+    def export(self, *configs):
+        for config in configs:
+            if config.type == "TXT":
+                text = ""
+                for line_no in range(self.image.bwimg.shape[0]):
+                    text += "".join(self.matrix[line_no]) + "\n"
+                with open(config.file_name + ".txt", "w") as file:
+                    file.write(text)
+            elif config.type == "HTML":
+                with open(config.file_name + ".html", "w", encoding="utf-8") as file:
+                    file.write(config.generate_art(self.matrix, self.image.image))
+            else:
+                svg = config.generate_art(self.matrix, self.image.image)
+                if config.type == "SVG":
+                    with open(config.file_name + ".svg", "w", encoding="utf-8-sig") as file:
+                        file.write(svg)
+                elif config.type == "PNG":
+                    if config.height == None and config.width != None:
+                        svg2png(bytestring=svg, write_to=config.file_name+".png", output_width=config.width)
+                    elif config.width == None and config.height != None:
+                        svg2png(bytestring=svg, write_to=config.file_name+".png", output_height=config.height)
+                    elif config.height == None and config.width == None:
+                        svg2png(bytestring=svg, write_to=config.file_name+".png")
+                    else:
+                        svg2png(bytestring=svg, write_to=config.file_name+".png", output_height=config.height, output_width=config.width)
+                else:
+                    svg_io = BytesIO(svg.encode('utf-8'))
+                    if config.type == "PDF":
+                        svg2pdf(file_obj=svg_io, write_to=config.file_name + ".pdf")
+                    else:
+                        svg2eps(file_obj=svg_io, write_to=config.file_name + ".eps")
 
     def txt_output(self, config) -> None:
         text = ""

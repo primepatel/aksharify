@@ -1,8 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-SORTEDCHARS = """ `.-_',~:*;!"^/\+><r=?()|7LxtcYivTljsz[]1Jnufy{}oI#FC4VX2ehk3aZw5ASbdpqUP6%9G8mKO&0EDHg$MWRNQB@"""
-
+SORTEDCHARS = '@BQNRWM$gHDE0&OKm8G9%6PUqpdbSA5wZa3khe2XV4CF#Io}{yfunJ1][zsjlTviYctxL7|)(?=r<>+\\/^"!;*:~,\'_-.` '
 class Dist:
     def __init__(self, chars, order=False, unique=False) -> None:
         if unique:

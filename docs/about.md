@@ -21,12 +21,13 @@ Aksharify is an open-source python package hosted on GitHub that allows you to e
 
 Start transforming your photos into captivating ASCII art with Aksharify and unleash your creativity in the world of visual representation!
 
-## Key Features
+## Key Features and Capabilities
 
-- Convert photos and images into ASCII art with a single function call.
+- __ASCII Art Generation:__ Aksharify facilitates the generation of ASCII art from images, converting the pixel values into a series of characters that form the art representation.
 
-- Fine-tune the output by adjusting parameters such as character set, resolution etc.
+- __Diverse Distributions:__ Users can choose from a variety of distributions, such as Linear, Exponential, and Normal, to control the density and arrangement of characters in the art.
 
-- Support for various character sets, allowing you to customize the style of the generated ASCII art.
+- __Customizable Character Sets:__ Each distribution allows users to customize the character set used for generating ASCII art, enabling them to express their creativity.
 
-- Export the ASCII art as plain text or save it as an image file for easy sharing and integration.
+- __Versatility:__ Aksharify supports multiple output formats, including PDF, EPS, PNG, TXT, HTML, and SVG, providing flexibility in sharing and integrating art in various media.
+- __Ease of Use:__ Simple API for easy image-to-ASCII conversion.

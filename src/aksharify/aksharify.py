@@ -23,11 +23,13 @@ class AksharArt:
         if show:
             self.show()
     
-    def show(self):
+    def show(self, colored=True):
         svg = SVG()
         svg.background_color = "#ffffff"
-        svg.bold = False
-        svg.fill_color = "#000000"
+        svg.bold = True
+        if not colored:
+            svg.bold = False
+            svg.fill_color = "#000000"
         art = svg.generate_art(self.matrix, self.image.image)
         ipd.display(ipd.SVG(art))
     

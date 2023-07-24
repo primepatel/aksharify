@@ -71,7 +71,7 @@ class Dist:
 
 
 class Linear(Dist):
-    def __init__(self, chars, order=False, unique=False) -> None:
+    def __init__(self, chars="@%#*+=;:-,. ", order=False, unique=False) -> None:
         super().__init__(chars, order, unique)
         num = 255/len(self.chars)
         self.list = [0]
@@ -83,7 +83,7 @@ class Linear(Dist):
         self.generate_char_dict()
 
 class Exponential(Linear):
-    def __init__(self, chars, power, order=False, unique=False) -> None:
+    def __init__(self, chars="@%#*+=;:-,. ", power=1, order=False, unique=False) -> None:
         super().__init__(chars, order, unique)
         self.hex_to_normal()
         self.list = self.list**power
@@ -92,7 +92,7 @@ class Exponential(Linear):
         self.generate_char_dict()  
         
 class Normal(Linear):
-    def __init__(self, chars, mean, var, order=False, unique=False) -> None:
+    def __init__(self, chars="@%#*+=;:-,. ", mean=0.5, var=1, order=False, unique=False) -> None:
         super().__init__(chars, order, unique)
         self.mean = mean
         self.var = var

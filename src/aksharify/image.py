@@ -16,6 +16,9 @@ class Image:
             response = requests.get(url)
             image_data = response.content
             self.obj = ski.io.imread(BytesIO(image_data))
+        self.refresh()
+
+    def refresh(self):
         self.image = self.obj
         self.bwimg = ski.color.rgb2gray(self.obj[:,:,:3])
         self.w, self.h = self.obj.shape[1], self.obj.shape[0]

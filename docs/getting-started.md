@@ -34,6 +34,12 @@ pipwin install cairocffi
 
 We are ready to use aksharify and creating awesome Ascii art.
 
+Dear Aksharify Users,
+
+For an even better and interactive experience, we highly recommend using Aksharify in the ==Notebook Environment==! 📓✨
+
+Happy Aksharifying! 🌟
+
 ## __Quick Starter__
 
 ```python

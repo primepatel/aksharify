@@ -2,7 +2,7 @@ import IPython.display as ipd
 from io import BytesIO
 from cairosvg import svg2png, svg2pdf, svg2eps
 from .outputs import SVG
-
+from matplotlib.colors import cnames
 class AksharArt:
     
     def __init__(self, image, dist) -> None:
@@ -124,3 +124,6 @@ class AksharArt:
         with open(html.file_name + ".html", "w", encoding="utf-8") as file:
             file.write(html.generate_art(self.matrix, self.image.image))
 
+
+def hexify(color:str):
+    return cnames[color]

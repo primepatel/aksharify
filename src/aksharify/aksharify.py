@@ -124,6 +124,33 @@ class AksharArt:
         with open(html.file_name + ".html", "w", encoding="utf-8") as file:
             file.write(html.generate_art(self.matrix, self.image.image))
 
+        
+class EdgeArt(AksharArt):
+    
+    def __init__(self, image, dist) -> None:
+        super().__init__(image, dist)
+        self.image = image
+        self.dist = dist
+        
+    def aksharify(self, bg_char=" ", show=False) -> None:
+        self.matrix = []
+        for x in range(self.image.edges.shape[0]):
+            line = []
+            for y in range(self.image.edges.shape[1]):
+                if self.image.edges[x, y]:
+                    line.append(self.dist.char_dict[int(self.image.bwimg[x, y]*255)])
+                else:
+                    line.append(bg_char)
+            self.matrix.append(line) 
+        if show:
+            self.show()
+    
+    def show(self):
+        svg = SVG()
+        svg.background_color = "#ffffff"
+        svg.fill_color = "#000000"
+        art = svg.generate_art(self.matrix, self.image)
+        ipd.display(ipd.SVG(art))
 
 def hexify(color:str):
     return cnames[color]

@@ -57,7 +57,7 @@ from aksharify.outputs import SVG
 ```
 
 ```python
-image = Image("..\images\julia1.png")
+image = Image("images\julia1.png")
 image.set_dim(200)
 image.show()
 ```
@@ -74,12 +74,12 @@ art.aksharify(show=True)
 
 ```python
 config = SVG()
-config.file_name = "..\\art"
+config.file_name = "art"
 config.bold = True
 ```
 
 ```python
-art.svg_output(config)
+art.export(config)
 ```
 
 _For examples from user community, please refer to the [primepatel.github.io/aksharify](https://primepatel.github.io/aksharify)_

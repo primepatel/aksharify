@@ -72,7 +72,7 @@ config.bold = True
 ```
 
 ```python
-art.svg_output(config)
+art.export(config)
 ```
 
 _For examples from user community, please refer to the [primepatel.github.io/aksharify](https://primepatel.github.io/aksharify)_

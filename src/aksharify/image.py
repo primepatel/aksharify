@@ -47,7 +47,7 @@ class Image:
     
     def edgefy(self, show=False):
         self.edges = ski.feature.canny(self.bwimg)
-        if not show:
+        if show:
             plt.axis('off')
             plt.imshow(self.edges, cmap='gray')
             plt.show()

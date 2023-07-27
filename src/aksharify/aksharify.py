@@ -149,7 +149,7 @@ class EdgeArt(AksharArt):
         svg = SVG()
         svg.background_color = "#ffffff"
         svg.fill_color = "#000000"
-        art = svg.generate_art(self.matrix, self.image)
+        art = svg.generate_art(self.matrix, self.image.image)
         ipd.display(ipd.SVG(art))
 
 def hexify(color:str):

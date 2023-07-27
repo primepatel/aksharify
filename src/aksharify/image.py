@@ -44,3 +44,8 @@ class Image:
     def normalize(self):
         self.bwimg = np.subtract(self.bwimg, np.min(self.bwimg))
         self.bwimg = np.divide(self.bwimg, np.max(self.bwimg))
+    
+    def edgefy(self, show=False):
+        self.edges = ski.feature.canny(self.bwimg)
+        if not show:
+            plt.imshow(self.edges, cmap='gray')

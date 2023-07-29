@@ -3,7 +3,7 @@ import ipywidgets as widgets
 from aksharify import AksharArt
 from .distributions import Exponential, Normal
 
-def interact_normal(img, distribution, colored=True):
+def normal_pe(img, distribution, colored=True):
     m = widgets.FloatSlider(
             min=distribution.a_mean,
             max=distribution.b_mean,
@@ -31,7 +31,7 @@ def interact_normal(img, distribution, colored=True):
     ipd.display(m, v, output)
 
 
-def interact_exponential(img, distribution, colored=True):
+def exponential_pe(img, distribution, colored=True):
     p = widgets.FloatSlider(
             min=distribution.a,
             max=distribution.b,

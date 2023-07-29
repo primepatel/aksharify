@@ -142,3 +142,31 @@ config2.fill_color = "#00ff00"
 ```python
 art.export(config1, config2)
 ```
+
+## Example 4
+
+```python
+from aksharify import EdgeArt, hexify
+from aksharify.image import Image
+from aksharify.distributions import Linear
+from aksharify.outputs import SVG
+
+# Step 1: Load the image from the given URL
+image = Image(url="https://th.bing.com/th/id/OIP.a7I8ZIepC_tU2aEUdyknawHaEP?pid=ImgDet&rs=1")
+image.resize(200)
+image.edgefy(show=True)
+
+# Step 2: Create an "EdgeArt" object with the image and a linear distribution
+lin = Linear()
+art = EdgeArt(image, lin)
+
+# Step 3: Generate ASCII art with a custom background character " " (i.e. non-edge pixel)
+art.aksharify(bg_char=" ", show=True)
+
+# Step 4: Configure the output format as SVG with a white background color using the "hexify" function to convert the color name to a hex code
+config = SVG()
+config.file_name = "art"
+config.background_color = hexify("white")
+# Export the ASCII art to an SVG file
+art.export(config)
+```

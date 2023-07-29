@@ -89,7 +89,10 @@ class Exponential(Linear):
         self.list = self.list**power
         self.normal_to_hex()
         self.y = lambda x: x**power
-        self.generate_char_dict()  
+        self.generate_char_dict()
+        self.a = -3
+        self.b = 3
+        self.s = 0.1
         
 class Normal(Linear):
     def __init__(self, chars="@%#*+=;:-,. ", mean=0.5, var=1, order=False, unique=False) -> None:
@@ -102,6 +105,12 @@ class Normal(Linear):
         self.normal_to_hex()
         self.y = self.normalizer
         self.generate_char_dict()
+        self.a_mean = 0.0001
+        self.b_mean = 0.9999
+        self.s_mean = 0.1
+        self.a_var = -3
+        self.b_var = 3
+        self.s_var = 0.1
     
     def normalizer(self, x):
         inv = (x*(1-self.mean))/(self.mean*(1-x))

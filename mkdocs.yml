@@ -97,14 +97,14 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/primepatel
       name: Github
-    - icon: fontawesome/brands/twitter
-      link: linktotwitter
-      name: Twitter
-    - icon: fontawesome/brands/medium
-      link: linktomedium
-      name: Medium
+    - icon: fontawesome/brands/dev
+      link: https://dev.to/primepatel
+      name: DEV
+    - icon: fontawesome/brands/hackerrank
+      link: https://www.hackerrank.com/primepatel
+      name: Hacker Rank
     - icon: fontawesome/brands/linkedin
-      link: linktolinkedin
+      link: https://www.linkedin.com/in/primepatel/
       name: LinkedIn
   generator: false
 
